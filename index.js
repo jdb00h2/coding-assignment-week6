@@ -71,71 +71,75 @@ class Game {
         for(let i = 0; i < 26; i++){
             let playerCard = this.playerDeck[i].value;
             let computerCard = this.computerDeck[i].value;
-            let wonRound = '';
             if (playerCard > computerCard){
                 this.playerScore +=1;
-                this.wonRound += `Point to ${playerName}.`
+                this.wonRound = `Point to ${playerName}.`
             } else if (computerCard > playerCard){
                 this.computerScore += 1;
-                this.wonRound += 'Point to the evil computer.'
+                this.wonRound = 'Point to the evil computer.'
             } else {
-                this.wonRound += 'Draw, no points awarded.'
+                this.wonRound = 'Draw, no points awarded.'
             }
             console.log(`                       Round ${i + 1}
-            --------------------------
+            ---------------------------------
 
-            ${playerName} plays the ${this.playerDeck[i].title} of ${this.playerDeck[i].suit} 
-            The evil computer plays the ${this.computerDeck[i].title} of ${this.computerDeck[i].suit}
-            ${wonRound}
+            ${playerName} draws the ${this.playerDeck[i].title} of ${this.playerDeck[i].suit}. 
+            The evil computer draws the ${this.computerDeck[i].title} of ${this.computerDeck[i].suit}.
+            ${this.wonRound}
 
             Current Score: 
             ${playerName}- ${this.playerScore}
-            The evil computer- ${this.computerScore}
+            Evil Computer- ${this.computerScore}
             `);
 
-            alert(`                             Round ${i +1}
-            -----------------------------------------------
-
-            ${playerName} plays the ${this.playerDeck[i].title} of ${this.playerDeck[i].suit} 
-            The evil computer plays the ${this.computerDeck[i].title} of ${this.computerDeck[i].suit}
-            ${wonRound}
+            alert(`                                     Round ${i +1}
+            ----------------------------------------------
+            ${playerName} draws the ${this.playerDeck[i].title} of ${this.playerDeck[i].suit}. 
+            The evil computer draws the ${this.computerDeck[i].title} of ${this.computerDeck[i].suit}.
+            ${this.wonRound}
             
             Current Score: 
             ${playerName}- ${this.playerScore}
-            The evil computer- ${this.computerScore}`);
+            Evil Computer- ${this.computerScore}`);
 
 
         }
         if(this.playerScore > this.computerScore){
-        console.log(`${playerName} wins!
+        console.log(`            ${playerName} wins!
+
+            Final score:
+            ${playerName}- ${this.playerScore}
+            Evil Computer- ${this.computerScore}`);
+
+        alert(`        ${playerName} wins! 
 
         Final score:
         ${playerName}- ${this.playerScore}
-        The evil computer- ${this.computerScore}`);
-
-        alert(`${playerName} wins! 
-
-        Final score:
-        ${playerName}- ${this.playerScore}
-        The evil computer- ${this.computerScore}`);
+        Evil Computer- ${this.computerScore}`);
         } else if(this.computerScore > this.playerScore){
-            console.log(`The evil computer wins. Run! 
+            console.log(`            The evil computer wins. Run! 
 
             Final score:
             ${playerName}- ${this.playerScore}
-            The evil computer- ${this.computerScore}`);
+            Evil Computer- ${this.computerScore}`);
 
-            alert(`The evil computer win. Run! 
+            alert(`           The evil computer wins. Run! 
 
             Final score:
             ${playerName}- ${this.playerScore}
-            The evil computer- ${this.computerScore}`);
+            Evil Computer- ${this.computerScore}`);
         } else{
-            `Draw. We will meet again!
+            console.log(`             Draw. We will meet again!
+            
+                Final score:
+                ${playerName}- ${this.playerScore}
+                Evil Computer- ${this.computerScore}`)
+            
+            alert(`           Draw. We will meet again!
             
             Final score:
             ${playerName}- ${this.playerScore}
-            The evil computer- ${this.computerScore}`
+            Evil Computer- ${this.computerScore}`)
         }
     }
 
@@ -147,6 +151,6 @@ const playerName = prompt('Welcome! Please enter your name to begin.')
 const deck1 = new Deck();
 deck1.shuffle();
 
-const deal1 = new Game();
-deal1.deal();
-deal1.compare();
+const game = new Game();
+game.deal();
+game.compare();
