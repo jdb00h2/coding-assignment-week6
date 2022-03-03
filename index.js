@@ -10,6 +10,7 @@ class Card {
     }
 }
 
+// To begin, we must create a deck of cards.
 class Deck {
     constructor() {
         this.deck = [];
@@ -38,7 +39,9 @@ class Deck {
                 this.deck.push(new Card(suit, value, title));
             }
     }
-    
+
+
+    // Fisher-Yates Shuffle to shuffle the deck. https://www.geeksforgeeks.org/shuffle-a-given-array-using-fisher-yates-shuffle-algorithm/
     shuffle() {
         for (let i = this.deck.length - 1; i > 0; i--){
             let j = Math.floor(Math.random() * (i+1));
@@ -58,6 +61,7 @@ class Game {
         this.wonRound = '';
     }
 
+    // We have our 52 card deck. Now we need to deal the cards to the player and cpu. This will alternate between player and cpu, dealing from the top.
     deal() {
     while (deck1.deck.length > 0){
         let card1 = deck1.deck.shift();
@@ -67,6 +71,7 @@ class Game {
     }
     }
 
+    // And finally to implement the game.
     compare() {
         for(let i = 0; i < 26; i++){
             let playerCard = this.playerDeck[i].value;
@@ -129,11 +134,11 @@ class Game {
             ${playerName}- ${this.playerScore}
             Evil Computer- ${this.computerScore}`);
         } else{
-            console.log(`             Draw. We will meet again!
+            console.log(`            Draw. We will meet again!
             
-                Final score:
-                ${playerName}- ${this.playerScore}
-                Evil Computer- ${this.computerScore}`)
+            Final score:
+            ${playerName}- ${this.playerScore}
+            Evil Computer- ${this.computerScore}`)
             
             alert(`           Draw. We will meet again!
             
@@ -145,8 +150,13 @@ class Game {
 
 
 
-}        
-const playerName = prompt('Welcome! Please enter your name to begin.')
+}
+
+function getName(){
+    playerName = prompt('Welcome! Please enter your name to begin.');
+    return playerName;
+}
+getName();
 
 const deck1 = new Deck();
 deck1.shuffle();
